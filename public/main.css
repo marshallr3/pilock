@@ -4,9 +4,9 @@ body {
   font-family: unset;
 }
 
-.vertical{
+#lock-button{
   margin: auto;
-  width: 100%;
+  width: 300px;
   position: absolute;
   text-align: center;
   top: 50%;
