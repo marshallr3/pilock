@@ -24,7 +24,6 @@ function initLockState() {
     if (this.isUnlocked > 1) {
         console.log("error state");
         // Add state control for this
-
     } else {
         listenForInput();
     }
@@ -56,12 +55,14 @@ function handleDown() {
 function handleUp() {
     if (isUnlocked == true) {
         isUnlocked = 0;
-    } else{
+    } else {
         isUnlocked = 1;
     }
     this.color = colors[isUnlocked];
     this.text = texts[isUnlocked];
-    fetch(baseUrl+`lock-turn`).then(response => response.text()).then(body => console.log(body));
+    fetch(baseUrl+`lock-turn`).then(response => response.text())
+    .then(body => console.log(body))
+    .catch(err => console.log(err));
     this.style.borderColor = this.color;
     this.style.color = this.color;
     this.innerHTML = this.text;

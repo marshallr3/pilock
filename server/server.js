@@ -14,8 +14,11 @@ app.get("/lock-turn", function(req, res) {
 app.get("/lock-state", (req, res) => {
     console.log("lock query");
     // attempt query of lock state synchronous
+
+    // Test value, replace with actual python return 
     res.send("2");
-})
+});
+
 
 
 app.listen(8080);
