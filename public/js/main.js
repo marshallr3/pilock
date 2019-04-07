@@ -1,27 +1,29 @@
 
-//var isUnlocked = true;
+var isUnlocked = 3;
 var baseUrl = `http://${location.host}/`;
 this.texts = ["armed", "unarmed", "unavailable"];
 this.colors = ["red", "green", "grey", "black"];
 
 function getLockState() {
     fetch(baseUrl+`lock-state`).then(response => response.text())
-    .then(body => {this.isUnlocked = body;
-        console.log(this.isUnlocked);
+    .then(body => {isUnlocked = body;
+        console.log(isUnlocked);
     });
     
 }
 
 function initLockState() {
     let lockingButton = document.getElementById("lock-button");
-    this.color = this.colors[this.isUnlocked];
-    this.text = this.texts[this.isUnlocked];
+    this.color = this.colors[isUnlocked];
+    console.log(this.color);
+    this.text = this.texts[isUnlocked];
+    console.log(this.text);
     lockingButton.innerHTML = this.text; 
     lockingButton.style.color = this.color;
     lockingButton.style.borderColor = this.color;
-    console.log(lockingButton.color)
+    console.log(lockingButton.color);
     // Unavailable state
-    if (this.isUnlocked > 1) {
+    if (isUnlocked > 1) {
         console.log("error state");
         // Add state control for this
     } else {
@@ -29,8 +31,8 @@ function initLockState() {
     }
 }
 
-getLockState();
 
+getLockState();
 
 function setup() {
     initLockState();
@@ -61,8 +63,8 @@ function handleUp() {
     this.color = colors[isUnlocked];
     this.text = texts[isUnlocked];
     fetch(baseUrl+`lock-turn`).then(response => response.text())
-    .then(body => console.log(body))
-    .catch(err => console.log(err));
+        .then(body => console.log(body))
+        .catch(err => console.log(err));
     this.style.borderColor = this.color;
     this.style.color = this.color;
     this.innerHTML = this.text;
